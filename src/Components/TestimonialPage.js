@@ -10,6 +10,7 @@ import { ArrowDownIcon } from '@chakra-ui/icons';
 export default function TestimonialPage() {
     const { globalState, setGlobalState } = React.useContext(AppContext);
     const { testimonials } = globalState;
+    
     const handleTestimonialGeneration = async () => {
         setGlobalState({ ...globalState, testimonials: [] });
         try {

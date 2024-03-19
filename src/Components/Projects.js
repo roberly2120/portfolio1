@@ -52,7 +52,7 @@ export default function Projects () {
     }
     return (
         <>
-        <VStack>
+        <VStack mb="25px">
             <Heading as='h1' size='2xl' mb='20px' mt="20px" onClick={handleHeadingClick}>Projects</Heading>
             <Modal isOpen={projectToEdit != null} onClose={onClose}>
     <ModalOverlay />

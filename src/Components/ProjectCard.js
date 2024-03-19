@@ -27,15 +27,15 @@ export default function ProjectCard(props) {
 
     return (
         <>
-            <Card className='project-card'>
+            <Card className='project-card' border="1px" borderColor="gray.400">
                 <CardBody>
-                    <Stack divider={<StackDivider borderColor="gray.200" />} spacing={3}>
+                    <Stack divider={<StackDivider borderColor="gray.400" />} spacing={3}>
                         <Box>
                             <Heading size="md" textTransform='uppercase'>
                                 {title}
                             </Heading>
                         </Box>
-                        <Box>
+                        <Box display="flex" alignItems="center" justifyContent="center">
                             <Image
                                 src={image}
                                 alt={`image for ${title}`}
@@ -43,7 +43,7 @@ export default function ProjectCard(props) {
                                 boxSize='200px'
                             />
                         </Box>
-                        <Box>
+                        <Box h="90px">
                             <Text>
                                 {description}
                             </Text>
