@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Card, Text, CardBody, CardFooter, Button, Stack, StackDivider, Box, Image, Heading, Flex } from '@chakra-ui/react';
+import { useMediaQuery, Card, Text, CardBody, CardFooter, Button, Stack, StackDivider, Box, Image, Heading, Flex } from '@chakra-ui/react';
 import { AppContext } from '../State';
 import { deleteProject } from '../Data/serverFunctions';
 
@@ -8,6 +8,7 @@ export default function ProjectCard(props) {
     const { title, description, image, repository, deployed_url, id } = props.project;
     const { globalState, setGlobalState } = useContext(AppContext);
     const { adminIsAuthorized, projectToEdit } = globalState;
+    const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
     const handleDelete = async (collectionName, docId) => {
         try {
@@ -24,10 +25,9 @@ export default function ProjectCard(props) {
         console.log(projectToEdit)
     }
 
-
     return (
         <>
-            <Card className='project-card' border="1px" borderColor="gray.400">
+            <Card className='project-card' border="1px" borderColor="gray.400" w={isLargerThan768 ? "" : "90%"}>
                 <CardBody>
                     <Stack divider={<StackDivider borderColor="gray.400" />} spacing={3}>
                         <Box>
