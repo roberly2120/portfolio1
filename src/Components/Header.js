@@ -18,15 +18,29 @@ function Header() {
     const handleHeadingClick = () => {
         setClickCount(prevCount => prevCount + 1)
     };
-    
+    const menuItemStyles = {
+        _focus: { outline: 'none' },
+        _active: { bg: 'transparent' },
+        _hover: { bg: 'transparent' },
+        justifyContent: 'center',
+        color: 'black'
+    }
     const menu = (
         <Menu>
-            <MenuButton as={Button} rightIcon={<HamburgerIcon boxSize="24px"/>} color="blue.200" size="lg" background="none"/>
+            <MenuButton 
+                as={Button} 
+                rightIcon={<HamburgerIcon boxSize="24px"/>} 
+                color="blue.200" size="lg" 
+                background="transparent"
+                _focus={{ outline: 'none'}}
+                _active={{ bg: 'transparent' }}
+                _hover={{ bg: 'transparent' }}
+            />
             <MenuList>
                 <Stack divider={<StackDivider borderColor="gray.300" />}>
-                    <MenuItem justifyContent="center" color="black" onClick={() => navigate('/')}>Home</MenuItem>
-                    <MenuItem justifyContent="center" color="black" onClick={() => navigate('/projects')}>Projects</MenuItem>
-                    <MenuItem justifyContent="center" color="black" onClick={() => navigate('/testimonials')}>Testimonials</MenuItem>
+                    <MenuItem onClick={() => navigate('/')} {...menuItemStyles}>Home</MenuItem>
+                    <MenuItem onClick={() => navigate('/projects')} {...menuItemStyles}>Projects</MenuItem>
+                    <MenuItem onClick={() => navigate('/testimonials')} {...menuItemStyles}>Testimonials</MenuItem>
                 </Stack>
             </MenuList>
         </Menu>
