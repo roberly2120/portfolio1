@@ -1,8 +1,10 @@
 import React from 'react';
-import { Box, Text, HStack, VStack, Image, Heading, Button} from '@chakra-ui/react';
+import { Box, Text, HStack, VStack, Image, Heading, Button, useBreakpointValue } from '@chakra-ui/react';
 
 export default function Intro(props) {
     const { drawerOpen } = props;
+    const imageSize = useBreakpointValue({ base: "150px", md: "250px"});
+
     return (
         
         <Box>
@@ -18,7 +20,7 @@ export default function Intro(props) {
                         Contact Info
                     </Button>
                 </VStack>
-                <Image src={process.env.PUBLIC_URL + '/headshot.jpg'} width="250px" h="auto" borderRadius="10px"/>
+                <Image src={process.env.PUBLIC_URL + '/headshot.jpg'} width="150px" h="auto" borderRadius="10px"/>
             </HStack>
         </Box>
     )

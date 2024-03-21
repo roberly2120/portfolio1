@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, VStack, Flex, Link } from '@chakra-ui/react';
+import { Box, Text, VStack, Link } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
