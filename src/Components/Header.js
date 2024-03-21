@@ -7,7 +7,7 @@ function Header() {
     const navigate = useNavigate();
    
     useEffect(() => {
-        if(clickCount ===3) {
+        if(clickCount === 5) {
             setClickCount(0);
             navigate('/newproject');
         }
@@ -19,7 +19,7 @@ function Header() {
     
 
     return (
-        <Box bg="teal.400" w="100%" p={4} color="white">
+        <Box bg="purple.400" w="100%" p={4} color="white">
             <Flex justify="space-between">
                 <Heading onClick={handleHeadingClick} style={{ cursor: 'default' }}>
                     Ryan Oberly

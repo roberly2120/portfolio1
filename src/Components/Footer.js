@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
     return (
-      <Box bg="teal.400" w="100%" p={4} color="white">
+      <Box bg="purple.400" w="100%" p={4} color="white">
           <VStack justifyContent="start">
             <Text>Ryan Oberly</Text>
             <Link href="mailto:ryanjoberly@gmail.com" color="white">ryanjoberly@gmail.com</Link>

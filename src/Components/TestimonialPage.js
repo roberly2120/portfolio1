@@ -5,12 +5,12 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Spinner, Box, Text, Heading, Button, Flex } from '@chakra-ui/react';
-import { ArrowDownIcon } from '@chakra-ui/icons';
+import { ArrowDownIcon, ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 
 export default function TestimonialPage() {
     const { globalState, setGlobalState } = React.useContext(AppContext);
     const { testimonials } = globalState;
-    
+
     const handleTestimonialGeneration = async () => {
         setGlobalState({ ...globalState, testimonials: [] });
         try {
@@ -20,34 +20,83 @@ export default function TestimonialPage() {
         }
     }
 
+    function NextArrow (props) {
+        const { className, style, onClick } = props;
+        return (
+            <ArrowForwardIcon
+                className={className}
+                style={{
+                     ...style, 
+                     display: "block", 
+                     color: "black", 
+                     zIndex: "2", 
+                     position: "absolute", 
+                     top:"70", 
+                     right: "-50px", 
+                     width: '2rem',
+                     height: '2rem',
+                     transform: 'translateY(-50%)'
+                    }}
+                onClick={onClick}
+            />
+        );
+    }
+    function PrevArrow (props) {
+        const { className, style, onClick } = props;
+        return (
+            <ArrowBackIcon
+                className={className}
+                style={{ 
+                    ...style, 
+                    display: "block", 
+                    color: "black", 
+                    zIndex: "2", 
+                    position: "absolute", 
+                    top:"70", 
+                    left: "-50px",
+                    width: '2rem',
+                    height: '2rem',
+                    transform: 'translateY(-50%)'
+                }}
+                onClick={onClick}
+            />
+        );
+    }
+
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        arrows: true
     }
     if (testimonials.length === 0) {
         return (
-            <Flex justifyContent="center" alignItems="center" height="100vh">
-                <Spinner />
+            <Flex justifyContent="center" alignItems="center" >
+                <Spinner style= {{  position: "absolute", top: "45%"}}/>
             </Flex>
         )
     }
     return (
         <>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: "50px" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: "50px"}}>
                 <Heading as="h1" mb={8} mt={8}>
                     Completely Real, Not AI-Generated Testimonials
                 </Heading>
-                <Slider {...settings} style={{ width: "40%" }}>
+                <Slider 
+                    {...settings} 
+                    style={{ width: "40%", overflow: "visible", display: 'flex', alignItems: 'stretch' }}
+                    nextArrow={<NextArrow />}
+                    prevArrow={<PrevArrow />}
+                    >
                     {testimonials.map((testimonial, idx) => (
 
                         <Box
                             key={idx}
-                            border="1px solid gray"
-                            w="280px" // this hasn't worked. the 'style' in Slider is the only thing that is changing the width. 
-                            h="300px" // Fixed height
+                            border="2px solid gray"
+                            // w="300px" 
+                            h="150px" 
                             borderRadius="10px"
                             boxShadow="lg"
                             display="flex"
